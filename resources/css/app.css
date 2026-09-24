@@ -9,9 +9,12 @@
 
 @theme {
     --font-sans:
-        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
-        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-        'Noto Color Emoji';
+        'Archivo', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Condensed width, used for plates, table headers and figures. */
+    --font-condensed:
+        'Archivo Narrow', 'Archivo', ui-sans-serif, system-ui, sans-serif;
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -59,77 +62,91 @@
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
+
+    /* Registration plate, the identity mark of a vehicle. */
+    --color-plate-surface: var(--plate-surface);
+    --color-plate-ink: var(--plate-ink);
+    --color-plate-band: var(--plate-band);
+    --color-plate-edge: var(--plate-edge);
 }
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
+    --background: oklch(0.954 0.005 254);
+    --foreground: oklch(0.204 0.012 254);
     --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
+    --card-foreground: oklch(0.204 0.012 254);
     --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --destructive-foreground: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.87 0 0);
-    --chart-1: oklch(0.646 0.222 41.116);
+    --popover-foreground: oklch(0.204 0.012 254);
+    --primary: oklch(0.365 0.145 265);
+    --primary-foreground: oklch(0.99 0 0);
+    --secondary: oklch(0.915 0.007 254);
+    --secondary-foreground: oklch(0.204 0.012 254);
+    --muted: oklch(0.928 0.005 254);
+    --muted-foreground: oklch(0.487 0.013 254);
+    --accent: oklch(0.906 0.016 262);
+    --accent-foreground: oklch(0.31 0.09 265);
+    --destructive: oklch(0.47 0.183 28);
+    --destructive-foreground: oklch(0.47 0.183 28);
+    --border: oklch(0.873 0.01 254);
+    --input: oklch(0.873 0.01 254);
+    --ring: oklch(0.365 0.145 265);
+    --chart-1: oklch(0.365 0.145 265);
     --chart-2: oklch(0.6 0.118 184.704);
-    --chart-3: oklch(0.398 0.07 227.392);
-    --chart-4: oklch(0.828 0.189 84.429);
-    --chart-5: oklch(0.769 0.188 70.08);
-    --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.87 0 0);
+    --chart-3: oklch(0.646 0.13 62);
+    --chart-4: oklch(0.47 0.183 28);
+    --chart-5: oklch(0.487 0.013 254);
+    --radius: 0.25rem;
+    --sidebar: oklch(1 0 0);
+    --sidebar-foreground: oklch(0.204 0.012 254);
+    --sidebar-primary: oklch(0.365 0.145 265);
+    --sidebar-primary-foreground: oklch(0.99 0 0);
+    --sidebar-accent: oklch(0.928 0.005 254);
+    --sidebar-accent-foreground: oklch(0.204 0.012 254);
+    --sidebar-border: oklch(0.873 0.01 254);
+    --sidebar-ring: oklch(0.365 0.145 265);
+    --plate-surface: oklch(1 0 0);
+    --plate-ink: oklch(0.16 0.008 254);
+    --plate-band: oklch(0.365 0.145 265);
+    --plate-edge: oklch(0.16 0.008 254);
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.145 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.145 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.985 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.396 0.141 25.723);
-    --destructive-foreground: oklch(0.637 0.237 25.331);
-    --border: oklch(0.269 0 0);
-    --input: oklch(0.269 0 0);
-    --ring: oklch(0.439 0 0);
-    --chart-1: oklch(0.488 0.243 264.376);
+    --background: oklch(0.19 0.01 254);
+    --foreground: oklch(0.92 0.005 254);
+    --card: oklch(0.237 0.012 254);
+    --card-foreground: oklch(0.92 0.005 254);
+    --popover: oklch(0.237 0.012 254);
+    --popover-foreground: oklch(0.92 0.005 254);
+    --primary: oklch(0.63 0.142 263);
+    --primary-foreground: oklch(0.15 0.02 265);
+    --secondary: oklch(0.285 0.013 254);
+    --secondary-foreground: oklch(0.92 0.005 254);
+    --muted: oklch(0.285 0.013 254);
+    --muted-foreground: oklch(0.687 0.012 254);
+    --accent: oklch(0.31 0.03 262);
+    --accent-foreground: oklch(0.86 0.05 263);
+    --destructive: oklch(0.4 0.15 28);
+    --destructive-foreground: oklch(0.68 0.2 28);
+    --border: oklch(0.312 0.013 254);
+    --input: oklch(0.312 0.013 254);
+    --ring: oklch(0.63 0.142 263);
+    --chart-1: oklch(0.63 0.142 263);
     --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.985 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(0.269 0 0);
-    --sidebar-ring: oklch(0.439 0 0);
+    --chart-3: oklch(0.769 0.135 62);
+    --chart-4: oklch(0.68 0.2 28);
+    --chart-5: oklch(0.687 0.012 254);
+    --sidebar: oklch(0.237 0.012 254);
+    --sidebar-foreground: oklch(0.92 0.005 254);
+    --sidebar-primary: oklch(0.63 0.142 263);
+    --sidebar-primary-foreground: oklch(0.15 0.02 265);
+    --sidebar-accent: oklch(0.285 0.013 254);
+    --sidebar-accent-foreground: oklch(0.92 0.005 254);
+    --sidebar-border: oklch(0.312 0.013 254);
+    --sidebar-ring: oklch(0.63 0.142 263);
+    --plate-surface: oklch(0.145 0.008 254);
+    --plate-ink: oklch(0.95 0.004 254);
+    --plate-band: oklch(0.42 0.15 265);
+    --plate-edge: oklch(0.45 0.014 254);
 }
 
 @layer base {
@@ -139,5 +156,15 @@
 
     body {
         @apply bg-background text-foreground;
+    }
+
+    /*
+     * A maintenance log is a register: mileages, prices and dates have to line
+     * up column by column, so figures are tabular everywhere.
+     */
+    table,
+    time,
+    .font-condensed {
+        font-variant-numeric: tabular-nums;
     }
 }

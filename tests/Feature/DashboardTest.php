@@ -7,10 +7,14 @@ test('guests are redirected to the login page', function () {
     $response->assertRedirect(route('login'));
 });
 
-test('authenticated users can visit the dashboard', function () {
-    $user = User::factory()->create();
-    $this->actingAs($user);
+test('a client lands on their garage', function () {
+    $this->actingAs(User::factory()->create())
+        ->get(route('dashboard'))
+        ->assertRedirect(route('vehicles.index'));
+});
 
-    $response = $this->get(route('dashboard'));
-    $response->assertOk();
+test('an administrator lands on the back office', function () {
+    $this->actingAs(User::factory()->admin()->create())
+        ->get(route('dashboard'))
+        ->assertRedirect(route('admin.users.index'));
 });

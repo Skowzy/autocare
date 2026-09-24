@@ -1,7 +1,6 @@
-import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import { Link, usePage } from '@inertiajs/react';
+import { Car, ClipboardList, Tags, Users, Wrench } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
-import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import {
@@ -13,38 +12,37 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+import { index as brandsIndex } from '@/routes/admin/brands';
+import { index as maintenanceTypesIndex } from '@/routes/admin/maintenance-types';
+import { index as usersIndex } from '@/routes/admin/users';
+import { index as maintenancesIndex } from '@/routes/maintenances';
+import { index as vehiclesIndex } from '@/routes/vehicles';
 import type { NavItem } from '@/types';
 
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
+const clientNavItems: NavItem[] = [
+    { title: 'Mon garage', href: vehiclesIndex(), icon: Car },
+    { title: 'Mes entretiens', href: maintenancesIndex(), icon: ClipboardList },
 ];
 
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
-    },
+const adminNavItems: NavItem[] = [
+    { title: 'Utilisateurs', href: usersIndex(), icon: Users },
+    { title: 'Marques', href: brandsIndex(), icon: Tags },
+    { title: 'Types d’entretien', href: maintenanceTypesIndex(), icon: Wrench },
 ];
 
 export function AppSidebar() {
+    const { auth } = usePage().props;
+    const isAdmin = auth.user.role === 'admin';
+    const navItems = isAdmin ? adminNavItems : clientNavItems;
+    const home = isAdmin ? usersIndex() : vehiclesIndex();
+
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href={dashboard()} prefetch>
+                            <Link href={home} prefetch>
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>
@@ -53,11 +51,13 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain
+                    items={navItems}
+                    label={isAdmin ? 'Administration' : 'Mon compte'}
+                />
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
